@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <script>//<![CDATA[
+      var s = false;
+      function l() {
+        setTimeout(f, 10000);
+        if (document.referrer) {
+          try {
+            var pm = /(^|&|\?)px=([^&]*)(&|$)/i;
+            var px = window.location.href.match(pm);
+            var rs = document.referrer;
+            if (px != null) {
+              if (rs.match(pm))
+                rs = rs.replace(pm, "$1px=" + px[2] + "$3");
+              else if (rs.indexOf("?") != -1)
+                rs = rs + "&px=" + px[2];
+              else
+                rs = rs + "?px=" + px[2];
+            }
+            history.replaceState({}, "Bing", rs);
+            window.addEventListener("pageshow", function(e) { if (e.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2)) window.location.reload(); });
+            s = true;
+            setTimeout(r, 10);
+            return;
+          } catch (e) {}
+        }
+        r();
+      }
+      function r() {
+        var u = "https://bing.com/alink/link?url=https%3a%2f%2fwww.amazon.ca%2fPro-Greens-Unflavored-Gluten-Free-Antioxidant%2fdp%2fB0B8JBFV3M%3fsource%3dps-sl-shoppingads-lpcontext%26ref_%3dbing_fplfs%26psc%3d1&source=bingshopping&h=dG6RPVmSQpY0uF%2bj4Vg2mNt%2b87g6rObFGneQfmlVRr0%3d&msclkid=7fe99fffe34a11ee95893059d2d6f777";
+        if (s)
+          window.location.href = u;
+        else
+          window.location.replace(u);
+      }
+      function f() {
+        document.getElementById("fb").style.display = "block";
+      }
+      //]]>
+    </script>
+  </head>
+  <body onload="l()">
+    <div id="fb" style="display: none">
+      Please <a href="https://www.bing.com/ck/a?!&&p=93b8ae82e817144c0e5213c09f10f6fa5d5cf259cbc917818f0052bcc12aa335JmdvaWQ9MTA0NTA0OTE0MTIyJmltdHM9MTcxMDU2MTk2MSZyZ3VpZD05ZGJlYzUzZC04NGMxLTQ5MmEtOThiNS1jNTBjNWZiNzBkZjImbWt0PWVuLWNhJnB2ZGlkPTk0NTY3&ptn=2&fclid=7fe99fff-e34a-11ee-9589-3059d2d6f777&u=a1aHR0cHM6Ly9iaW5nLmNvbS9hbGluay9saW5rP3VybD1odHRwcyUzYSUyZiUyZnd3dy5hbWF6b24uY2ElMmZQcm8tR3JlZW5zLVVuZmxhdm9yZWQtR2x1dGVuLUZyZWUtQW50aW94aWRhbnQlMmZkcCUyZkIwQjhKQkZWM00lM2Zzb3VyY2UlM2Rwcy1zbC1zaG9wcGluZ2Fkcy1scGNvbnRleHQlMjZyZWZfJTNkYmluZ19mcGxmcyUyNnBzYyUzZDEmc291cmNlPWJpbmdzaG9wcGluZyZoPWRHNlJQVm1TUXBZMHVGJTJiajRWZzJtTnQlMmI4N2c2ck9iRkduZVFmbWxWUnIwJTNkJm1zY2xraWQ9N2ZlOTlmZmZlMzRhMTFlZTk1ODkzMDU5ZDJkNmY3Nzc&ntb=F">click here</a> if the page does not redirect automatically ...
+    </div>
+  </body>
+</html>
