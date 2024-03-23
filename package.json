@@ -1,0 +1,10 @@
+{
+"description": "serverless wordpress",
+	"scripts": {
+		"build": "diy-pwa build videotest",
+		"preview": "diy-pwa preview videotest"
+	},
+	"devDependencies": {
+		"diy-pwa": "latest"
+	}
+}
